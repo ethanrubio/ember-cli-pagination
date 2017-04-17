@@ -70,7 +70,8 @@ export default Ember.Component.extend({
            totalPages = Number(this.get("totalPages"));
 
       if(currentPage === totalPages && num === 1) { return false; }
-      if(currentPage <= 1 && num === -1) { return false; }
+      // fix for 0 page pagination
+      if(currentPage <= 0 && num === -1) { return false; }
       this.incrementProperty('currentPage', num);
 
       const newPage = this.get('currentPage');
